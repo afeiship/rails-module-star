@@ -8,7 +8,8 @@ class ProductsController < ApplicationController
   end
 
   def collect
-    @product = Product.find(params[:format])
+    puts params
+    @product = Product.find(params[:id])
     current_user = User.find(1)
     unless @product.find_collect(current_user)
       Collect.create(:user => current_user, :product => @product)
@@ -18,11 +19,11 @@ class ProductsController < ApplicationController
   end
 
   def uncollect
-    @product = Product.find(params[:format])
+    @product = Product.find(params[:id])
     current_user = User.find(1)
     collect = @product.find_collect(current_user)
     collect.destroy
-    flash[:warning] = "您已取消收藏该商品"
+    flash[:notice] = "您已取消收藏该商品"
     redirect_to :root
   end
 end

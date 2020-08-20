@@ -4,6 +4,6 @@
 </p>
 
 <footer class="actions">
-    <%= link_to "收藏", collect_products_path(@item), method: :post, remote: true, data: { confirm: "确定收藏?" } %>
-    <%= link_to "取消收藏", uncollect_products_path(@item), method: :post, remote: true, data: { confirm: "取消收藏?" } %>
+    <%= link_to "收藏", "/v1/products/#{@item.id}/collect", method: :post, data: { confirm: "确定收藏?" } %>
+    <%= link_to "取消收藏", "/v1/products/#{@item.id}/uncollect", method: :post, remote: true, data: { confirm: "取消收藏?" } %>
 </footer>

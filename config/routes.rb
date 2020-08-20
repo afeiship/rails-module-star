@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   scope :v1, defaults: { format: :json } do
     resource :products do
       member do
-        post :collect
-        post :uncollect
+        # post :collect
+        # post :uncollect
+
+        post "/:id/collect", to: "products#collect"
+        post "/:id/uncollect", to: "products#uncollect"
       end
     end
   end
